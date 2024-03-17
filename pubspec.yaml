@@ -36,6 +36,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  flutter_downloader: ^1.8.3
+  path_provider: ^2.0.3
+  native_ar_viewer: ^0.0.2
   #local storage
   shared_preferences: ^2.2.0
   flutter_secure_storage: ^8.0.0
@@ -92,6 +95,7 @@ flutter:
     - assets/dev/
     - assets/other_images/
     - assets/icons/
+    - assets/Model3D/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

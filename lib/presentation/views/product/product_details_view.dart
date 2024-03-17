@@ -10,6 +10,15 @@ import '../../../../../domain/entities/product/product.dart';
 import '../../../core/router/app_router.dart';
 import '../../blocs/cart/cart_bloc.dart';
 import '../../widgets/input_form_button.dart';
+import 'dart:io' as io;
+import 'package:native_ar_viewer/native_ar_viewer.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import '../../../core/constant/strings.dart';
+
+String documentDirectoryPath = "";
+String iosAssetPath = '';
+String taskId = '';
 
 class ProductDetailsView extends StatefulWidget {
   final Product product;
@@ -29,13 +38,45 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     super.initState();
   }
 
+  _downloadAssetsForIOS(String name) async {
+    await _prepareSaveDir();
+    taskId = (await FlutterDownloader.enqueue(
+        url: "$modelURL/$name.usdz",
+        savedDir: documentDirectoryPath))!;
+    // print('taskId = $taskId');
+  }
+
+  Future<void> _prepareSaveDir() async {
+    documentDirectoryPath = (await _findLocalPath())!;
+    final savedDir = io.Directory(documentDirectoryPath);
+    bool hasExisted = await savedDir.exists();
+    if (!hasExisted) {
+      savedDir.create();
+    }
+  }
+
+  Future<String?> _findLocalPath() async =>
+      (await getApplicationDocumentsDirectory()).path;
+
+  _launchAR(String name) async {
+    if (io.Platform.isAndroid) {
+      await NativeArViewer.launchAR("$modelURL/$name.glb");
+    } else if (io.Platform.isIOS) {
+      await _downloadAssetsForIOS(name);
+      await NativeArViewer.launchAR("$documentDirectoryPath/$name.usdz");
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Platform not supported')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xffe9e8ca),
+        backgroundColor: const Color(0xff6c8737),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.message)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
@@ -45,53 +86,77 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         children: [
           SizedBox(
             height: MediaQuery.sizeOf(context).width,
-            child: CarouselSlider(
-              options: CarouselOptions(
-                height: double.infinity,
-                enlargeCenterPage: true,
-                aspectRatio: 16 / 9,
-                viewportFraction: 1,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-              ),
-              items: widget.product.images.map((image) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Hero(
-                      tag: widget.product.id,
-                      child: CachedNetworkImage(
-                        imageUrl: image,
-                        imageBuilder: (context, imageProvider) => Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.contain,
-                              colorFilter: ColorFilter.mode(
-                                  Colors.grey.shade50.withOpacity(0.25),
-                                  BlendMode.softLight),
+            // NEED TO MODIFY THIS CHILD, ADDED STACK AND POSITIONED
+
+            child: Stack(children: [
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: double.infinity,
+                  enlargeCenterPage: true,
+                  aspectRatio: 16 / 9,
+                  viewportFraction: 1,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                ),
+                items: widget.product.images.map((image) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Hero(
+                        tag: widget.product.id,
+                        child: CachedNetworkImage(
+                          imageUrl: image,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.contain,
+                                colorFilter: ColorFilter.mode(
+                                    Colors.grey.shade50.withOpacity(0.25),
+                                    BlendMode.softLight),
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) => Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => const Center(
+                            child: Icon(
+                              Icons.error_outline,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
-                        placeholder: (context, url) => Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
-                          ),
-                        ),
-                        errorWidget: (context, url, error) => const Center(
-                          child: Icon(
-                            Icons.error_outline,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    );
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+              Positioned(
+                bottom: 16.0, // Adjust the bottom margin as needed
+                right: 16.0, // Adjust the right margin as needed
+                child: GestureDetector(
+                  onTap: () {
+                    _launchAR(widget.product.name);
                   },
-                );
-              }).toList(),
-            ),
+                  child: Container(
+                    width: 50.0, // Adjust the button size as needed
+                    height: 50.0, // Adjust the button size as needed
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(
+                          0xffe9e8ca), // Adjust the button color as needed
+                    ),
+                    child:
+                        Image.asset('assets/Model3D/ControlAR.png', height: 50),
+                  ),
+                ),
+              ),
+            ]),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 10),
@@ -138,7 +203,9 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                               width: _selectedPriceTag.id == priceTag.id
                                   ? 2.0
                                   : 1.0,
-                              color: Colors.grey,
+                              color: _selectedPriceTag.id == priceTag.id
+                                  ? const Color(0xff6c8737)
+                                  : Colors.grey,
                             ),
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5.0)),
@@ -148,7 +215,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           child: Column(
                             children: [
                               Text(priceTag.name),
-                              Text(priceTag.price.toString()),
+                              Text("\$" + priceTag.price.toString()),
                             ],
                           ),
                         ),

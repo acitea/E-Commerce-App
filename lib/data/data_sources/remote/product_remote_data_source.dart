@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -15,19 +16,30 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   final http.Client client;
   ProductRemoteDataSourceImpl({required this.client});
 
+  // PRODUCTS RETRIEVED FROM HERE
   @override
   Future<ProductResponseModel> getProducts(params) => _getProductFromUrl(
       '$baseUrl/products?keyword=${params.keyword}&pageSize=${params.pageSize}&page=${params.limit}&categories=${jsonEncode(params.categories.map((e) => e.id).toList())}');
 
   Future<ProductResponseModel> _getProductFromUrl(String url) async {
-    final response = await client.get(
-      Uri.parse(url),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-    if (response.statusCode == 200) {
-      return productResponseModelFromJson(response.body);
+    final response = await rootBundle.loadString('assets/Model3D/FAKEDATA.json');
+
+    // BUG: ORIGINAL IMPLEMENTATION COMMENTED BELOW
+    // final response = await client.get(
+    //   Uri.parse(url),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // );
+
+    // if (response.statusCode == 200) {
+    //   return productResponseModelFromJson(response.body);
+    // } else {
+    //   throw ServerException();
+    // }
+
+    if (response.isNotEmpty) {
+      return productResponseModelFromJson(response);
     } else {
       throw ServerException();
     }

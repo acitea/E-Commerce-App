@@ -1,0 +1,154 @@
+{
+    "meta": {
+        "page":0,
+        "pageSize":10,
+        "total":4
+    },
+
+    "data": [
+        {
+            "_id": "64d53187ddb42ad5a9846d36",
+            "name": "Snake Plant",
+            "description": "Also known as the Mother-in-law's Tongue, the Snake Plant boasts upright, sword-like leaves with striking variegation. Originating from West Africa, it can reach heights of 30 to 120 centimeters. Thriving in low light conditions, this resilient plant prefers infrequent watering, allowing the soil to dry completely before rehydration. With air-purifying qualities, the Snake Plant is an excellent choice for low-maintenance indoor greenery.",
+            "priceTags": [
+                {
+                    "_id": "64d53220ddb42ad5a9846d39",
+                    "name": "Plant",
+                    "price": 79.90,
+                    "product": "64d53187ddb42ad5a9846d36",
+                    "__v": 0
+                }
+            ],
+            "categories": [
+                {
+                    "_id": "64ceca81a27812b9edb12c4a",
+                    "name": "Mouse",
+                    "image": "https://res.cloudinary.com/dhyttttax/image/upload/v1693148016/category/mouse_wf2kio.jpg",
+                    "products": [
+                        "6502160d6ab9fa268c30a51c"
+                    ],
+                    "__v": 0
+                }
+            ],
+            "images": [
+                "https://www.myjunglehome.com.au/cdn/shop/products/sansevieria-laurentii-snake-plant-25cm-pot-my-jungle-home-160415.jpg?v=1632920069",
+                "https://asset.bloomnation.com/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1709703400/vendor/8469/catalog/product/2/0/20200304122155_file_5e5ef4a3ccb60_5e5ef7b7cd5fa_64306f77e15a0.jpg",
+                "https://www.ikea.com/sg/en/images/products/sansevieria-trifasciata-potted-plant-mother-in-laws-tongue__0908898_pe676659_s5.jpg",
+                "https://cdn.shopify.com/s/files/1/0150/6262/files/the-sill_LargeSnakelaurentii_Large_Mexiaplanter-CementCream_variant.jpg?v=1686848709"
+            ],
+            "createdAt": "2023-08-10T18:50:47.829Z",
+            "updatedAt": "2023-08-10T18:56:23.977Z",
+            "__v": 0
+        },
+        {
+            "_id": "64d536dc712facfb1bb15daa",
+            "name": "Fiddle Leaf Fig",
+            "description": "The Fiddle Leaf Fig, known for its dramatic foliage, features large, glossy leaves resembling a fiddle or violin. Native to western Africa, it can grow up to 3 meters in height. Best suited for bright, indirect light, the Fiddle Leaf Fig requires consistent watering, allowing the top inch of soil to dry between waterings. Maintain a moderate humidity level for optimal growth.",
+            "priceTags": [
+                {
+                    "_id": "64d5371d712facfb1bb15dac",
+                    "name": "Small",
+                    "price": 37.50,
+                    "product": "64d536dc712facfb1bb15daa",
+                    "__v": 0
+                },
+                {
+                    "_id": "64d53735712facfb1bb15daf",
+                    "name": "Large",
+                    "price": 80,
+                    "product": "64d536dc712facfb1bb15daa",
+                    "__v": 0
+                }
+            ],
+            "categories": [
+                {
+                    "_id": "64ceca81a27812b9edb12c4a",
+                    "name": "Mouse",
+                    "image": "https://res.cloudinary.com/dhyttttax/image/upload/v1693148016/category/mouse_wf2kio.jpg",
+                    "products": [
+                        "6502160d6ab9fa268c30a51c"
+                    ],
+                    "__v": 0
+                }
+            ],
+            "images": [
+                "https://www.gardenersdream.co.uk/images/ficus-lyrata-p6229-51477_image.jpg",
+                "https://d2rxt25e475whq.cloudfront.net/wp-content/uploads/2022/08/25140917/AdobeStock_354261481-scaled.jpeg"
+            ],
+            "createdAt": "2023-08-10T19:13:32.836Z",
+            "updatedAt": "2023-08-10T19:15:27.844Z",
+            "__v": 0
+        },
+        {
+            "_id": "64d53aa503be2376487adb0f",
+            "name": "Philodendron",
+            "description": "The Philodendron genus encompasses various species with heart-shaped leaves, originating from the tropical regions of the Americas. With sizes ranging from compact to large, they adapt well to different light conditions and moderate humidity. Water moderately, allowing the top inch of soil to dry between waterings. Philodendrons are easy to care for and make versatile additions to indoor spaces.",
+            "priceTags": [
+                {
+                    "_id": "64d53b2203be2376487adb12",
+                    "name": "Small",
+                    "price": 21.73,
+                    "product": "64d53aa503be2376487adb0f",
+                    "__v": 0
+                }
+            ],
+            "categories": [
+                {
+                    "_id": "64ceca81a27812b9edb12c4a",
+                    "name": "Mouse",
+                    "image": "https://res.cloudinary.com/dhyttttax/image/upload/v1693148016/category/mouse_wf2kio.jpg",
+                    "products": [
+                        "6502160d6ab9fa268c30a51c"
+                    ],
+                    "__v": 0
+                }
+            ],
+            "images": [
+                "https://www.noahgardencentre.com.sg/cdn/shop/products/Screenshot2022-04-12at3.32.21PM.png?v=1649748759",
+                "https://denchfieldnursery.com/cdn/shop/products/Philodendron_600x.jpg?v=1610034014",
+                "https://www.thespruce.com/thmb/3uIfURfXTH9tbHPh6_sFj8f720Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SPR-philodendron-squamiferum-care-guide-7092429-01-23a2eb7c30de4c4db3790681e4b5c040.jpg"
+            ],
+            "createdAt": "2023-08-10T19:29:41.394Z",
+            "updatedAt": "2023-08-10T19:33:19.718Z",
+            "__v": 0
+        },
+        {
+            "_id": "64d5c82274ee85c3ec5d1676",
+            "name": "Peace Lily",
+            "description": "The Peace Lily, featuring graceful, white blooms, is native to tropical regions of the Americas. With a height ranging from 30 to 50 centimeters, it prefers low to medium light. Keep the soil consistently moist, allowing slight drying between waterings. The Peace Lily is an efficient air purifier, contributing to a healthier indoor environment.",
+            "priceTags": [
+                {
+                    "_id": "64d5ca857e8969fc17c7c758",
+                    "name": "Standard",
+                    "price": 69.69,
+                    "product": "64d5c82274ee85c3ec5d1676",
+                    "__v": 0
+                }
+            ],
+            "categories": [
+                {
+                    "_id": "64d532bcddb42ad5a9846d3d",
+                    "name": "Laptop",
+                    "image": "https://res.cloudinary.com/dhyttttax/image/upload/v1693148015/category/laptop_akv4vl.jpg",
+                    "products": [
+                        "64d53187ddb42ad5a9846d36",
+                        "64d536dc712facfb1bb15daa",
+                        "64d53aa503be2376487adb0f",
+                        "64d5c82274ee85c3ec5d1676",
+                        "64ecbf741c070256d3afd546",
+                        "64ecc8a2d9d133f901b9c34e",
+                        "6502135b995dff276dd1e638"
+                    ],
+                    "__v": 0
+                }
+            ],
+            "images": [
+                "https://www.langdonsflowers.com/cdn/shop/products/plant37_098016df-5585-4a70-abf9-4f18a0b464c5.jpg?v=1706795277",
+                "https://m.media-amazon.com/images/I/51fjlUz15VS._AC_UF1000,1000_QL80_.jpg"
+            ],
+            "createdAt": "2023-08-11T05:33:22.935Z",
+            "updatedAt": "2023-08-11T05:43:50.316Z",
+            "__v": 0
+        }
+    ]
+}

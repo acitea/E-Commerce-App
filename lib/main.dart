@@ -18,9 +18,11 @@ import 'presentation/blocs/home/navbar_cubit.dart';
 import 'presentation/blocs/order/order_fetch/order_fetch_cubit.dart';
 import 'presentation/blocs/product/product_bloc.dart';
 import 'presentation/blocs/user/user_bloc.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize();
   await di.init();
 
   runApp(const MyApp());
