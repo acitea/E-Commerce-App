@@ -55,6 +55,7 @@ class ProductCard extends StatelessWidget {
             ),
             child: Card(
               color: Colors.white,
+              surfaceTintColor: Colors.transparent,
               elevation: 2,
               margin: const EdgeInsets.all(4),
               clipBehavior: Clip.antiAlias,
@@ -75,12 +76,13 @@ class ProductCard extends StatelessWidget {
                     )
                   : Hero(
                       tag: product!.id,
+                      // PRODUCT CARDS ON MAIN
                       child: Padding(
-                        padding: const EdgeInsets.all(32.0),
+                        padding: const EdgeInsets.all(0.0),
                         child: CachedNetworkImage(
                           imageUrl: product!.images.first,
                           placeholder: (context, url) => Shimmer.fromColors(
-                            baseColor: Colors.grey.shade100,
+                            baseColor: Colors.white,
                             highlightColor: Colors.white,
                             child: Container(),
                           ),

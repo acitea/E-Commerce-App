@@ -52,16 +52,16 @@ class _MainViewState extends State<MainView> {
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(48)),
                     ),
-                    backgroundColor: Colors.black87,
+                    backgroundColor: const Color(0xff6c8737),
                     snakeViewColor: Colors.black87,
                     height: 68,
                     elevation: 4,
                     selectedItemColor: SnakeShape.circle == SnakeShape.indicator
-                        ? Colors.black87
+                        ? const Color(0xffe9e8ca)
                         : null,
                     unselectedItemColor: Colors.white,
                     selectedLabelStyle: const TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff6c8737),
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.italic,
                       fontSize: 12,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../core/constant/strings.dart';
 import '../../../../core/constant/images.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/router/app_router.dart';
@@ -105,14 +106,17 @@ class _HomeViewState extends State<HomeView> {
                           height: 8,
                         ),
                         Text(
-                          "Welcome,",
+                          "Welcome!",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 36),
+                              fontWeight: FontWeight.bold, fontSize: 28,
+                              color: Color(0xff6c8737)),
                         ),
                         Text(
-                          "E-Shop mobile store",
+                          // APP TITLE GOES HERE
+                          appTitle,
                           style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 22),
+                              fontWeight: FontWeight.w600, fontSize: 22,
+                              color: Color(0xff6c8737)),
                         ),
                       ],
                     ),
@@ -216,7 +220,7 @@ class _HomeViewState extends State<HomeView> {
                             context.read<FilterCubit>().getFiltersCount() != 0,
                         backgroundColor: Theme.of(context).primaryColor,
                         child: InputFormButton(
-                          color: Colors.black87,
+                          color: const Color(0xff6c8737),
                           onClick: () {
                             Navigator.of(context).pushNamed(AppRouter.filter);
                           },

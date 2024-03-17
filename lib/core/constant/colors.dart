@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 Color kLightBackgroundColor = const Color(0xffffffff);
 Color kBackgroundColor = const Color(0xFFFFFFFF);
+
+// Button color
 Color kLightPrimaryColor = const Color(0xffff8900);
-Color kLightSecondaryColor = const Color(0xff040415);
+Color kLightSecondarySecondaryColor = const Color(0xffe9e8ca);
+Color kLightSecondaryColor = const Color(0xff6c8737);
 Color kLightParticlesColor = const Color(0x44948282);
+
+// Maybe this one is for all the black text?
 Color kLightTextColor = Colors.black54;
 
 Color kDarkBackgroundColor = const Color(0xFF1A2127);
